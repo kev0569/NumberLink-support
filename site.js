@@ -52,7 +52,7 @@
       const list = node('div',null,'rules-list'); for (const paragraph of selected.rules.split('\n\n')) { const rule = node('section',null,'rule'); rule.append(node('p',paragraph)); list.append(rule); } content.append(list);
     } else {
       content.classList.add('reading'); content.append(node('div','NUMBERLINK','eyebrow'),node('h1',w[16]),node('p',w[17],'note'));
-      for(let index=18;index<=30;index+=2) { content.append(node('h2',w[index]),node('p',w[index+1])); if(index===24) content.append(link(w[34],'https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement')); }
+      for(let index=18;index<=30;index+=2) { content.append(node('h2',w[index]),node('p',w[index+1])); if(index===24) content.append(link(w[34],'https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement')); if(index===30) content.append(link('Apple · '+w[16],'https://www.apple.com/legal/privacy/')); }
       content.append(node('h2',w[32]),link('studio.kt@outlook.com',email,'support-email'));
     }
   }
