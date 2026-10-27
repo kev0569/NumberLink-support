@@ -49,7 +49,18 @@
       const support = node('section',null,'section'); support.id='support'; support.append(node('h2',w[10]),node('p',w[11]),link('studio.kt@outlook.com',email,'support-email'),node('p',w[33],'note')); content.append(support);
     } else if (page === 'rules') {
       content.classList.add('reading'); content.append(node('div','NUMBERLINK','eyebrow'),node('h1',w[1]));
-      const list = node('div',null,'rules-list'); for (const paragraph of selected.rules.split('\n\n')) { const rule = node('section',null,'rule'); rule.append(node('p',paragraph)); list.append(rule); } content.append(list);
+      const core = node('ol',null,'core-rules');
+      for (const rule of selected.core) core.append(node('li',rule));
+      content.append(core,node('h2',selected.faqTitle));
+      const faq = node('div',null,'rules-faq');
+      for (const item of selected.faq) {
+        const detail = node('details',null,'faq-item');
+        detail.append(node('summary',item.question));
+        const answer = node('div',null,'faq-answer');
+        for (const paragraph of item.answer.split('\n\n')) answer.append(node('p',paragraph));
+        detail.append(answer); faq.append(detail);
+      }
+      content.append(faq);
     } else {
       content.classList.add('reading'); content.append(node('div','NUMBERLINK','eyebrow'),node('h1',w[16]),node('p',w[17],'note'));
       for(let index=18;index<=30;index+=2) { content.append(node('h2',w[index]),node('p',w[index+1])); if(index===24) content.append(link(w[34],'https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement')); if(index===30) content.append(link('Apple · '+w[16],'https://www.apple.com/legal/privacy/')); }
